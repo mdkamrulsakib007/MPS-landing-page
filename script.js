@@ -248,3 +248,34 @@
   }
 })();
 
+
+/* ============================================
+   AREA71 MPS - META PIXEL CTA TRACKING
+============================================ */
+
+(function () {
+  "use strict";
+
+  const consultationLinks = document.querySelectorAll(
+    'a[href^="https://area71bd.com/mps-form/"]'
+  );
+
+  consultationLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+
+      if (typeof window.fbq === "function") {
+        window.fbq(
+          "trackCustom",
+          "MPSConsultationClick",
+          {
+            content_name: "Area71 MPS Consultation"
+          }
+        );
+      }
+
+    });
+  });
+
+})();
+
+
