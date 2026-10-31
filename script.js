@@ -249,8 +249,9 @@
 })();
 
 
+
 /* ============================================
-   AREA71 MPS - META PIXEL CTA TRACKING
+   AREA71 MPS - CONSULTATION CLICK TRACKING
 ============================================ */
 
 (function () {
@@ -264,18 +265,15 @@
     link.addEventListener("click", function () {
 
       if (typeof window.fbq === "function") {
-        window.fbq(
-          "trackCustom",
-          "MPSConsultationClick",
-          {
-            content_name: "Area71 MPS Consultation"
-          }
-        );
+        window.fbq("trackCustom", "MPSConsultationClick", {
+          content_name: "Area71 MPS Consultation"
+        });
       }
 
     });
   });
 
 })();
+
 
 
