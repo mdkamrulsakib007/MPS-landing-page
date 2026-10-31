@@ -919,6 +919,56 @@ a.a71-footer-contact-item:hover {
 
 
 
+/* ============================================
+   CASE STUDIES NAVIGATION
+============================================ */
+
+/* Keep video heading visible below sticky navbar */
+#area71-videos {
+  scroll-margin-top: 90px;
+}
+
+/* Case Studies link */
+.nav a[href="#area71-videos"] {
+  transition: color 0.2s ease;
+}
+
+/* Highlight when video section is active */
+.nav a[href="#area71-videos"][aria-current="location"] {
+  color: var(--green);
+  font-weight: 800;
+}
+
+/* Accommodate extra navbar item on smaller desktops */
+@media (min-width: 961px) and (max-width: 1180px) {
+  .nav .nav-in {
+    gap: 14px;
+  }
+
+  .nav .links {
+    gap: 12px;
+  }
+
+  .nav .links a {
+    font-size: 11px;
+  }
+
+  .nav .nav-cta {
+    margin-left: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav a[href="#area71-videos"] {
+    transition: none;
+  }
+}
+
+
+
 
 
 

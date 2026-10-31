@@ -195,3 +195,56 @@
 
 })();
 
+
+
+/* ============================================
+   CASE STUDIES NAVIGATION
+============================================ */
+
+(function () {
+  "use strict";
+
+  function initCaseStudiesNav() {
+    const videoSection = document.getElementById(
+      "area71-videos"
+    );
+
+    const navLinks = document.querySelectorAll(
+      '.nav a[href="#area71-videos"]'
+    );
+
+    if (!videoSection || !navLinks.length) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        const isVisible = entries[0].isIntersecting;
+
+        navLinks.forEach(function (link) {
+          if (isVisible) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      },
+      {
+        rootMargin: "-90px 0px -55% 0px",
+        threshold: 0
+      }
+    );
+
+    observer.observe(videoSection);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initCaseStudiesNav,
+      { once: true }
+    );
+  } else {
+    initCaseStudiesNav();
+  }
+})();
+
