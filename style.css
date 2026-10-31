@@ -683,6 +683,242 @@ a.a71-footer-contact-item:hover {
 }
 
 
+/* ============================================
+   AREA71 YOUTUBE VIDEO SHOWCASE
+============================================ */
+
+.a71-videos {
+  background: #ffffff;
+  border-bottom: 1px solid #e5eee8;
+}
+
+/* Section heading */
+.a71-videos-head {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.a71-videos-head .eyebrow::before {
+  display: none;
+}
+
+.a71-videos-head h2 {
+  margin: 15px 0 18px;
+}
+
+.a71-videos-head p {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Desktop: 4 columns */
+.a71-video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Individual video card */
+.a71-video-card {
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #deebe5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(12, 61, 45, 0.05);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.a71-video-card.is-ready:hover {
+  transform: translateY(-4px);
+  border-color: #b6d4c8;
+  box-shadow: 0 16px 38px rgba(12, 61, 45, 0.12);
+}
+
+/* 16:9 responsive media area */
+.a71-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(106, 188, 167, 0.18),
+      transparent 55%
+    ),
+    #102c25;
+}
+
+/* Video thumbnail button */
+.a71-video-trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.a71-video-trigger:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* YouTube thumbnail */
+.a71-video-poster {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a71-video-card.is-ready .a71-video-poster {
+  display: block;
+}
+
+/* Placeholder when no URL is added */
+.a71-video-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  color: #c9ded3;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.a71-video-card.is-ready .a71-video-empty {
+  display: none;
+}
+
+/* Play icon */
+.a71-video-play {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.a71-video-play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid #ffffff;
+}
+
+.a71-video-card.is-ready .a71-video-play {
+  display: block;
+}
+
+.a71-video-trigger:hover .a71-video-play {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--green-dark);
+}
+
+/* Embedded YouTube player */
+.a71-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Text under video */
+.a71-video-details {
+  padding: 18px 18px 22px;
+}
+
+.a71-video-number {
+  display: block;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.a71-video-details h3 {
+  margin: 9px 0 0;
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1000px) {
+  .a71-video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 560px) {
+  .a71-videos-head {
+    margin-bottom: 30px;
+  }
+
+  .a71-video-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .a71-video-card {
+    border-radius: 14px;
+  }
+
+  .a71-video-details {
+    padding: 16px 18px 19px;
+  }
+
+  .a71-video-details h3 {
+    font-size: 15px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .a71-video-card,
+  .a71-video-play {
+    transition: none;
+  }
+
+  .a71-video-card.is-ready:hover {
+    transform: none;
+  }
+}
+
+
+
 
 
 

@@ -59,3 +59,139 @@
   }
 
 })();
+
+
+/* ============================================
+   AREA71 YOUTUBE VIDEO SHOWCASE
+============================================ */
+
+(function () {
+  "use strict";
+
+  const videoCards = document.querySelectorAll(
+    ".a71-video-card[data-youtube]"
+  );
+
+  if (!videoCards.length) return;
+
+  let activeVideo = null;
+
+  // Extract a valid YouTube video ID from a URL
+  function getYouTubeId(value) {
+    if (!value || !value.trim()) return null;
+
+    try {
+      const url = new URL(value.trim());
+      const host = url.hostname
+        .toLowerCase()
+        .replace(/^www\./, "");
+
+      let id = null;
+
+      if (host === "youtu.be") {
+        id = url.pathname.split("/")[1];
+
+      } else if (
+        [
+          "youtube.com",
+          "m.youtube.com",
+          "music.youtube.com",
+          "youtube-nocookie.com"
+        ].includes(host)
+      ) {
+        const parts = url.pathname.split("/");
+
+        if (url.pathname === "/watch") {
+          id = url.searchParams.get("v");
+
+        } else if (
+          ["embed", "shorts", "live"].includes(parts[1])
+        ) {
+          id = parts[2];
+        }
+      }
+
+      return /^[a-zA-Z0-9_-]{11}$/.test(id || "")
+        ? id
+        : null;
+
+    } catch (error) {
+      return null;
+    }
+  }
+
+  videoCards.forEach(function (card) {
+    const url = card.dataset.youtube;
+    const videoId = getYouTubeId(url);
+
+    // Leave cards with empty or invalid URLs disabled
+    if (!videoId) return;
+
+    const trigger = card.querySelector(
+      ".a71-video-trigger"
+    );
+
+    const poster = card.querySelector(
+      ".a71-video-poster"
+    );
+
+    const title = card.querySelector(
+      ".a71-video-details h3"
+    ).textContent.trim();
+
+    // Enable card and display thumbnail
+    card.classList.add("is-ready");
+    trigger.disabled = false;
+    trigger.setAttribute("aria-label", "Play " + title);
+
+    poster.src =
+      "https://i.ytimg.com/vi/" +
+      videoId +
+      "/hqdefault.jpg";
+
+    // Hide broken thumbnails, if any
+    poster.addEventListener("error", function () {
+      poster.style.display = "none";
+    });
+
+    trigger.addEventListener("click", function () {
+
+      // Stop the previously playing video
+      if (activeVideo && activeVideo.card !== card) {
+        activeVideo.iframe.replaceWith(
+          activeVideo.trigger
+        );
+      }
+
+      // Create embedded player on demand
+      const iframe = document.createElement("iframe");
+
+      iframe.src =
+        "https://www.youtube-nocookie.com/embed/" +
+        videoId +
+        "?autoplay=1&rel=0";
+
+      iframe.title = title;
+
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; " +
+        "encrypted-media; gyroscope; picture-in-picture; " +
+        "web-share";
+
+      iframe.referrerPolicy =
+        "strict-origin-when-cross-origin";
+
+      iframe.allowFullscreen = true;
+
+      trigger.replaceWith(iframe);
+
+      activeVideo = {
+        card: card,
+        iframe: iframe,
+        trigger: trigger
+      };
+    });
+  });
+
+})();
+
