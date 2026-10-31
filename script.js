@@ -257,7 +257,7 @@
   "use strict";
 
   const consultationLinks = document.querySelectorAll(
-    'a[href^="https://area71bd.com/mps-form/"]'
+    'a[href^="https://area71academy.com/managed-product-service-schedule-form/"]'
   );
 
   consultationLinks.forEach(function (link) {
