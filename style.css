@@ -1254,3 +1254,159 @@ a.a71-footer-contact-item:hover {
 @media (prefers-reduced-motion: reduce) {
   .theme-toggle { transition: none; }
 }
+
+
+/* ============================================
+   AREA71 MPS - EMBEDDED CONSULTATION FORM
+============================================ */
+.a71-lead-section {
+  background: #f3f8f6;
+  border-top: 1px solid #e0e9e4;
+  scroll-margin-top: 90px;
+}
+.a71-lead-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+  gap: clamp(36px, 6vw, 88px);
+  align-items: start;
+}
+.a71-lead-copy { padding-top: 22px; }
+.a71-lead-copy h2 { max-width: 530px; margin: 16px 0 20px; }
+.a71-lead-copy .sub { max-width: 495px; }
+.a71-lead-benefits { margin-top: 34px; border-top: 1px solid #d9e6df; }
+.a71-lead-benefits p {
+  display: flex; align-items: baseline; gap: 16px;
+  margin: 0; padding: 17px 0;
+  border-bottom: 1px solid #d9e6df;
+  color: #425b53; font-weight: 650; font-size: 13px;
+}
+.a71-lead-benefits p span {
+  color: #015a49; font-weight: 850; font-size: 12px;
+}
+.a71-lead-card {
+  padding: clamp(24px, 4vw, 40px);
+  background: #fff;
+  border: 1px solid #dce8e1;
+  border-radius: 20px;
+  box-shadow: 0 20px 55px rgba(16, 60, 48, .08);
+}
+.a71-lead-card-head h3 { font-size: 23px; margin-bottom: 7px; }
+.a71-lead-card-head p { font-size: 12px; margin: 0 0 26px; }
+.a71-lead-fields {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+}
+.a71-lead-full { grid-column: 1 / -1; }
+.a71-lead-field label {
+  display: block; margin-bottom: 7px;
+  font-size: 12px; font-weight: 800; color: #30473e;
+}
+.a71-lead-field input,
+.a71-lead-field select,
+.a71-lead-field textarea {
+  display: block; width: 100%; min-width: 0;
+  padding: 13px 14px; border: 1px solid #d7e3dd;
+  border-radius: 9px; background: #f9fcfa;
+  color: #172e26; font: inherit; font-size: 13px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.a71-lead-field textarea { resize: vertical; min-height: 108px; }
+.a71-lead-field input:focus,
+.a71-lead-field select:focus,
+.a71-lead-field textarea:focus {
+  outline: none; border-color: #258b6e;
+  box-shadow: 0 0 0 3px rgba(37, 139, 110, .14);
+}
+.a71-lead-field input::placeholder,
+.a71-lead-field textarea::placeholder { color: #758c83; opacity: 1; }
+.a71-lead-consent {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 22px 0; font-size: 11px; line-height: 1.7;
+  color: #50675d; cursor: pointer;
+}
+.a71-lead-consent input {
+  flex: 0 0 auto; margin-top: 3px; width: 15px; height: 15px;
+  accent-color: #015a49;
+}
+.a71-lead-consent a { color: #015a49; text-decoration: underline; }
+.a71-lead-submit { width: 100%; white-space: normal; }
+.a71-lead-submit:disabled { opacity: .7; cursor: wait; transform: none; }
+.a71-lead-status { margin: 12px 0 0; font-size: 12px; }
+.a71-lead-status:empty { display: none; }
+.a71-lead-status.is-success { color: #156747; }
+.a71-lead-status.is-error { color: #a33c32; }
+.a71-lead-trap {
+  position: absolute !important; left: -9999px !important;
+  width: 1px !important; height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Match the original #111f2b hero-based dark mode */
+:root[data-theme="dark"] .a71-lead-section {
+  background: #172938; border-top-color: #354c5e;
+}
+:root[data-theme="dark"] .a71-lead-benefits { border-top-color: #354c5e; }
+:root[data-theme="dark"] .a71-lead-benefits p {
+  color: #cbd9e2; border-bottom-color: #354c5e;
+}
+:root[data-theme="dark"] .a71-lead-benefits p span { color: #aecbd1; }
+:root[data-theme="dark"] .a71-lead-card {
+  background: #1e3141;
+  border-color: #354c5e;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .18);
+}
+:root[data-theme="dark"] .a71-lead-field label { color: #dde7ee; }
+:root[data-theme="dark"] .a71-lead-field input,
+:root[data-theme="dark"] .a71-lead-field select,
+:root[data-theme="dark"] .a71-lead-field textarea {
+  background: #152634; border-color: #435b6c; color: #f0f6fa;
+}
+:root[data-theme="dark"] .a71-lead-field input::placeholder,
+:root[data-theme="dark"] .a71-lead-field textarea::placeholder {
+  color: #a9bdcb;
+}
+:root[data-theme="dark"] .a71-lead-consent { color: #c1d1dc; }
+:root[data-theme="dark"] .a71-lead-consent a { color: #c0dfe0; }
+:root[data-theme="dark"] .a71-lead-status.is-success { color: #a6e8c4; }
+:root[data-theme="dark"] .a71-lead-status.is-error { color: #ffb8b1; }
+
+@media (max-width: 820px) {
+  .a71-lead-layout { grid-template-columns: 1fr; gap: 28px; }
+  .a71-lead-copy { padding-top: 0; }
+  .a71-lead-benefits { margin-top: 22px; }
+}
+@media (max-width: 520px) {
+  .a71-lead-fields { grid-template-columns: 1fr; }
+  .a71-lead-card { padding: 23px 19px; border-radius: 15px; }
+  .a71-lead-card-head h3 { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .a71-lead-field input,
+  .a71-lead-field select,
+  .a71-lead-field textarea { transition: none; }
+}
+
+/* Phone country code + national number sit on one row */
+.a71-lead-phone-row {
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 10px;
+}
+.a71-lead-phone-row select { min-width: 0; }
+.a71-lead-custom-code { margin-top: 10px; max-width: 210px; }
+.a71-lead-custom-code[hidden] { display: none !important; }
+.a71-lead-hint {
+  color: #667c73;
+  font-size: 11px;
+  line-height: 1.55;
+  margin: 7px 0 0;
+}
+.a71-lead-optional { font-weight: 500; color: #71857b; }
+:root[data-theme="dark"] .a71-lead-hint,
+:root[data-theme="dark"] .a71-lead-optional { color: #b1c4d1; }
+@media (max-width: 520px) {
+  .a71-lead-phone-row { grid-template-columns: minmax(0, 1fr); }
+  .a71-lead-custom-code { max-width: 100%; }
+}
+
