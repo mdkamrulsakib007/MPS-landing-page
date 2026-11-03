@@ -336,6 +336,7 @@
       email: String(fields.get("email") || "").trim(),
       residenceCountry: String(fields.get("residenceCountry") || "").trim(),
       preferredCallTime: String(fields.get("preferredCallTime") || "").trim(),
+      profession: String(fields.get("profession") || "").trim(),
       interest: String(fields.get("interest") || "").trim(),
       message: String(fields.get("message") || "").trim(),
       website: String(fields.get("website") || ""),

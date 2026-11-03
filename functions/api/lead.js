@@ -42,6 +42,7 @@ export async function onRequestPost({ request, env }) {
   const phoneCountryCode = clean(data.phoneCountryCode, 5);
   const residenceCountry = clean(data.residenceCountry, 80);
   const preferredCallTime = clean(data.preferredCallTime, 10);
+  const profession = clean(data.profession, 100);
   const email = clean(data.email, 150);
   const interest = clean(data.interest, 60);
   const message = clean(data.message, 1000);
