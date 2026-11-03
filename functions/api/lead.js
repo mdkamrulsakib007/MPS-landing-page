@@ -58,6 +58,7 @@ export async function onRequestPost({ request, env }) {
     !/^[0-9()\-.\s]+$/.test(phone) ||
     allPhoneDigits < 7 || allPhoneDigits > 15 ||
     !preferredTimeValid ||
+    profession.length < 2 ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
     !/^[a-zA-Z0-9_-]{8,90}$/.test(submissionId) ||
     (interest && ![
@@ -80,12 +81,19 @@ export async function onRequestPost({ request, env }) {
 
   const fullPhone = phoneCountryCode + " " + phone;
   const params = new URLSearchParams({
-    token: env.LEAD_SHARED_SECRET,
-    submissionId, fullName, phone: fullPhone, phoneCountryCode,
-    residenceCountry, preferredCallTime,
-    email, interest, message,
-    consent: "true"
-  });
+  token: env.LEAD_SHARED_SECRET,
+  submissionId,
+  fullName,
+  phone: fullPhone,
+  phoneCountryCode,
+  residenceCountry,
+  preferredCallTime,
+  profession,
+  email,
+  interest,
+  message,
+  consent: "true"
+});
 
   try {
     const upstream = await fetch(endpoint.toString(), {
