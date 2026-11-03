@@ -19,13 +19,5 @@ We should link it to MPS-specific refund and contract terms,
 or clearly labeling the existing link as a training-course refund policy. 
 This is especially important because the footer says “Money-Back Assurance.”
 
-**Consultation form**
-The main consultation destination is live. 
-One field asks how long the applicant has been abroad. 
-If our MPS advertising targets people living in Bangladesh as well as expatriates, 
-we should consider making that question conditional or optional.
 
-**Advertising conversion tracking**
-No explicit GA4 or Meta Pixel implementation in the uploaded HTML. 
-Our hosting platform might supply tracking separately, 
-We have to make sure that we can attribution when visitors move to the form.
+
