@@ -1410,3 +1410,436 @@ a.a71-footer-contact-item:hover {
   .a71-lead-custom-code { max-width: 100%; }
 }
 
+
+/* ================================================
+   AREA71 MPS - PREMIUM BUTTON REDESIGN
+   Lift & Glow / Luminous Lime / Animated Fill
+   Premium Halo for dark-mode footer
+================================================ */
+
+/* 1. BASE BUTTON STYLE */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 58px;
+  padding: 16px 24px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  font-family: "Plus Jakarta Sans", "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+
+  text-align: center;
+  white-space: normal;
+
+  transition:
+    transform 0.26s cubic-bezier(.2,.8,.2,1),
+    background-color 0.3s ease,
+    background-size 0.36s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Remove the original generic hover movement */
+.btn:hover {
+  transform: none;
+}
+
+/* Animated arrow */
+.btn .arrow {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 21px;
+  line-height: 1;
+
+  transition: transform 0.3s ease;
+}
+
+/* ================================================
+   2. LIFT & GLOW - PRIMARY GREEN BUTTONS
+================================================ */
+
+.btn-primary {
+  background: #015a49;
+  color: #ffffff;
+  border-color: #015a49;
+
+  box-shadow:
+    0 4px 0 #004637,
+    0 10px 22px rgba(1, 90, 73, 0.14);
+}
+
+/* ================================================
+   3. LUMINOUS LIME - HERO & PROMINENT CTAs
+================================================ */
+
+.btn-lime {
+  background: #cbe86c;
+  color: #10271e;
+  border-color: #cbe86c;
+
+  box-shadow:
+    0 6px 20px rgba(203, 232, 108, 0.19);
+}
+
+/* Light reflection that sweeps across the button */
+.btn-lime::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -55%;
+
+  width: 38%;
+  height: 160%;
+
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.72),
+    transparent
+  );
+
+  transform: skewX(-22deg);
+  pointer-events: none;
+
+  transition: left 0.55s ease;
+}
+
+/* ================================================
+   4. ANIMATED FILL - SECONDARY BUTTONS
+================================================ */
+
+.btn-ghost {
+  background-color: rgba(255,255,255,0.04);
+
+  background-image: linear-gradient(
+    90deg,
+    #cbe86c,
+    #d9f188
+  );
+
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+
+  border: 1.5px solid #718b99;
+  color: #ffffff;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ================================================
+   5. INTERACTIVE HOVER EFFECTS
+================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+
+  /* Primary: elevate with a deeper shadow */
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    background: #08745d;
+    border-color: #08745d;
+
+    box-shadow:
+      0 8px 0 #004637,
+      0 19px 32px rgba(1, 90, 73, 0.28);
+  }
+
+  /* Lime: glow, enlarge and animate reflection */
+  .btn-lime:hover {
+    transform: translateY(-3px) scale(1.015);
+
+    background: #d9f188;
+    border-color: #d9f188;
+
+    box-shadow:
+      0 0 0 3px rgba(203,232,108,0.15),
+      0 0 32px rgba(203,232,108,0.40),
+      0 13px 28px rgba(0,0,0,0.12);
+  }
+
+  .btn-lime:hover::after {
+    left: 135%;
+  }
+
+  /* Ghost: lime color fills from left to right */
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+
+    background-color: rgba(255,255,255,0.04);
+    background-size: 100% 100%;
+
+    color: #10271e;
+    border-color: #cbe86c;
+
+    box-shadow:
+      0 12px 28px rgba(203,232,108,0.18);
+  }
+
+  /* Moving arrow */
+  .btn:hover .arrow {
+    transform: translate(5px, -3px);
+  }
+}
+
+/* ================================================
+   6. NAVBAR CONSULTATION BUTTON
+================================================ */
+
+.nav .nav-cta {
+  min-height: 52px;
+  padding: 12px 17px;
+
+  font-size: 15px;
+  border-radius: 11px;
+
+  white-space: nowrap;
+}
+
+/* Smaller desktops: retain readable navigation */
+@media (min-width: 961px) and (max-width: 1199px) {
+  .nav .nav-cta {
+    min-height: 48px;
+    padding: 11px 9px;
+    font-size: 13px;
+  }
+}
+
+/* ================================================
+   7. MOBILE CONSULTATION BUTTON
+================================================ */
+
+.mobile-menu a.btn {
+  min-height: 58px;
+  padding: 16px 44px;
+
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.mobile-cta-arrow {
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mobile-menu a.btn:hover .mobile-cta-arrow {
+    transform: translate(5px, -50%);
+  }
+}
+
+/* ================================================
+   8. FORM SUBMIT BUTTON
+================================================ */
+
+.a71-lead-submit {
+  width: 100%;
+  min-height: 60px;
+  padding: 17px 24px;
+
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 12px;
+}
+
+.a71-lead-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none !important;
+  box-shadow: none;
+}
+
+/* ================================================
+   9. FOOTER CONSULTATION BUTTON
+================================================ */
+
+.a71-footer-consultation {
+  min-height: 56px;
+  max-width: 100%;
+  padding: 15px 22px;
+
+  background: #015a49;
+  color: #ffffff !important;
+
+  border: 1px solid #267b65;
+  border-radius: 12px;
+
+  font-family: "Plus Jakarta Sans", "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,0.14);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.a71-footer-consultation:hover {
+  transform: none;
+}
+
+.a71-footer-consultation > span:last-child {
+  display: inline-block;
+  transition: transform 0.28s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .a71-footer-consultation:hover {
+    transform: translateY(-4px);
+    background: #08745d;
+
+    box-shadow:
+      0 13px 28px rgba(0,0,0,0.23);
+  }
+
+  .a71-footer-consultation:hover > span:last-child {
+    transform: translate(5px, -3px);
+  }
+}
+
+/* ================================================
+   10. NAVY DARK MODE
+================================================ */
+
+/* Primary green remains highly visible */
+:root[data-theme="dark"] .btn-primary {
+  background: #0b765c;
+  color: #ffffff;
+  border-color: #208c70;
+
+  box-shadow:
+    0 4px 0 #07503e,
+    0 10px 24px rgba(0,0,0,0.24);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root[data-theme="dark"] .btn-primary:hover {
+    transform: translateY(-4px);
+    background: #0b8869;
+    border-color: #32a080;
+
+    box-shadow:
+      0 8px 0 #07503e,
+      0 17px 33px rgba(0,0,0,0.33),
+      0 0 22px rgba(38,164,121,0.22);
+  }
+}
+
+/* Premium Halo: footer CTA in dark mode */
+:root[data-theme="dark"] .a71-footer-consultation {
+  background: #243b4b;
+  border: 1px solid #66899c;
+  color: #f4f9fc !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 8px 22px rgba(0,0,0,0.20);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root[data-theme="dark"] .a71-footer-consultation:hover {
+    transform: translateY(-3px);
+    background: #2b4557;
+    border-color: #a4d5d4;
+
+    box-shadow:
+      0 0 0 3px rgba(154,210,209,0.10),
+      0 0 29px rgba(115,199,193,0.35),
+      0 16px 30px rgba(0,0,0,0.28);
+  }
+}
+
+/* ================================================
+   11. RESPONSIVE BUTTON SIZES
+================================================ */
+
+@media (max-width: 540px) {
+  .btn {
+    min-height: 56px;
+    padding: 15px 18px;
+    font-size: 15px;
+  }
+
+  .mobile-menu a.btn {
+    min-height: 58px;
+    padding: 16px 44px;
+    font-size: 15px;
+  }
+
+  .a71-lead-submit {
+    min-height: 60px;
+    font-size: 16px;
+  }
+
+  .a71-footer-consultation {
+    min-height: 56px;
+    padding: 15px 18px;
+    font-size: 15px;
+  }
+}
+
+/* ================================================
+   12. ACCESSIBILITY
+================================================ */
+
+.btn:focus-visible,
+.a71-footer-consultation:focus-visible {
+  outline: 3px solid #78baa6;
+  outline-offset: 4px;
+}
+
+.btn:active:not(:disabled),
+.a71-footer-consultation:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Avoid hover movement on touch devices */
+@media (hover: none) {
+  .btn:hover,
+  .a71-footer-consultation:hover {
+    transform: none;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn .arrow,
+  .btn-lime::after,
+  .mobile-cta-arrow,
+  .a71-footer-consultation,
+  .a71-footer-consultation > span:last-child {
+    transition: none !important;
+  }
+
+  .btn:hover,
+  .btn:active,
+  .a71-footer-consultation:hover,
+  .a71-footer-consultation:active {
+    transform: none !important;
+  }
+
+  .btn-lime:hover::after {
+    left: -55%;
+  }
+}
+
+
