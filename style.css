@@ -1852,3 +1852,164 @@ a.a71-footer-contact-item:hover {
 }
 
 
+/* ================================================
+   AREA71 - BUTTON & MOBILE HOTFIX
+   Fix mobile navbar, animated fill and touch effects
+================================================ */
+
+/* 1. HIDE DESKTOP CTA ON TABLET AND MOBILE */
+
+@media (max-width: 960px) {
+  .nav .nav-in > .nav-cta {
+    display: none !important;
+  }
+}
+
+/* ================================================
+   2. FIX EXPLORE THE SERVICE FILL
+================================================ */
+
+.btn-ghost {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.04);
+  border-color: #718b99;
+  color: #ffffff;
+}
+
+/* Smooth lime layer behind the button text */
+.btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    #cbe86c,
+    #d9f188
+  );
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  transition: transform 0.42s
+    cubic-bezier(.22, .8, .22, 1);
+}
+
+/* Keep text and arrow ABOVE the moving fill */
+.btn-ghost .btn-label,
+.btn-ghost .arrow {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================================
+   3. DESKTOP HOVER ANIMATION
+================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .btn-ghost:hover,
+  .btn-ghost:focus-visible {
+    background: rgba(255, 255, 255, 0.04);
+    color: #10271e;
+    border-color: #cbe86c;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 12px 28px rgba(203, 232, 108, 0.18);
+  }
+
+  .btn-ghost:hover::before,
+  .btn-ghost:focus-visible::before {
+    transform: scaleX(1);
+  }
+
+  .btn-ghost:hover .arrow {
+    transform: translateY(4px);
+  }
+}
+
+/* ================================================
+   4. MOBILE TOUCH / PRESS FEEDBACK
+================================================ */
+
+@media (hover: none), (pointer: coarse) {
+
+  .btn,
+  .a71-footer-consultation {
+    touch-action: manipulation;
+  }
+
+  /* Green buttons */
+  .btn-primary:active {
+    background: #08745d;
+
+    box-shadow:
+      0 2px 0 #004637,
+      0 0 18px rgba(1, 90, 73, 0.28);
+  }
+
+  /* Lime buttons */
+  .btn-lime:active {
+    background: #d9f188;
+
+    box-shadow:
+      0 0 0 3px rgba(203, 232, 108, 0.17),
+      0 0 25px rgba(203, 232, 108, 0.38);
+  }
+
+  .btn-lime:active::after {
+    left: 135%;
+  }
+
+  /* Explore the Service: animate fill when pressed */
+  .btn-ghost:active {
+    background: rgba(255, 255, 255, 0.04);
+    color: #10271e;
+    border-color: #cbe86c;
+
+    box-shadow:
+      0 0 20px rgba(203, 232, 108, 0.22);
+  }
+
+  .btn-ghost:active::before {
+    transform: scaleX(1);
+    transition-duration: 0.16s;
+  }
+
+  /* Footer button */
+  .a71-footer-consultation:active {
+    background: #08745d;
+
+    box-shadow:
+      0 0 20px rgba(1, 90, 73, 0.25);
+  }
+
+  /* Footer button in dark mode */
+  :root[data-theme="dark"]
+  .a71-footer-consultation:active {
+    background: #2b4557;
+
+    box-shadow:
+      0 0 22px rgba(115, 199, 193, 0.32);
+  }
+}
+
+/* ================================================
+   5. REDUCED MOTION
+================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-ghost::before {
+    transition: none !important;
+  }
+}
+
+
+
