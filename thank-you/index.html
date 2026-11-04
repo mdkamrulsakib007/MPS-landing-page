@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101c27">
+<meta name="robots" content="noindex,nofollow">
+<title>Thank You | Area71 MPS</title>
+<script>
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem("a71-theme"); }
+      catch (error) {}
+
+      if (theme !== "dark" && theme !== "light") {
+        theme = window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark" : "light";
+      }
+
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
+<script>
+(function () {
+  var key = "a71-mps-lead-confirmed-v1";
+  var valid = false;
+  var firstView = false;
+  try {
+    var record = JSON.parse(sessionStorage.getItem(key) || "null");
+    var elapsed = Date.now() - Number(record && record.savedAt);
+    valid = !!(record && /^[a-zA-Z0-9_-]{8,90}$/.test(record.id || "") &&
+      elapsed >= 0 && elapsed < 24 * 60 * 60 * 1000);
+    if (valid && !record.viewed && elapsed < 60 * 60 * 1000) {
+      // Mark viewed first so refreshes do not generate duplicate conversion views.
+      record.viewed = true;
+      sessionStorage.setItem(key, JSON.stringify(record));
+      firstView = true;
+    }
+  } catch (error) {}
+  window.a71TrackThankYouPage = valid && firstView;
+  if (!valid) window.location.replace("/consultation/");
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/consultation/funnel.css">
+<script>
+if (window.a71TrackThankYouPage) {
+  // Single confirmed PageView; media buyer can configure /thank-you/ conversion.
+  // Do not also fire a Lead event here, or successful leads may double-count.
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+    n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','2112411853488877');
+  fbq('track','PageView');
+}
+</script>
+</head>
+<body class="a71-funnel-page a71-funnel-thanks">
+<header class="a71-funnel-header">
+<div class="container a71-funnel-header-inner">
+<a href="/" class="a71-funnel-brand" aria-label="Area71 MPS homepage"><img src="https://area71bd.com/wp-content/uploads/2025/12/logo-square-15.png.webp" alt="Area71 Venture Limited" width="164" height="67"></a>
+<div class="a71-funnel-header-actions"><button class="theme-toggle" id="theme-toggle" type="button"
+              aria-label="Switch to dark mode" aria-pressed="false"
+              title="Switch to dark mode">
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" width="20" height="20"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/>
+        </svg>
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" width="20" height="20"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+        </svg>
+      </button><a href="/" class="a71-funnel-back">← Back to website</a></div>
+</div></header>
+<main id="main" class="a71-thanks-main">
+  <section class="a71-thanks-card" aria-labelledby="a71-thanks-title">
+    <div class="a71-thanks-icon" aria-hidden="true">✓</div>
+    <span class="a71-funnel-kicker">CONSULTATION REQUEST RECEIVED</span>
+    <h1 id="a71-thanks-title">Thank you!</h1>
+    <h2>Your consultation request has been received.</h2>
+    <p>Our MPS team will review your information and contact you to discuss your Amazon FBA goals and the next steps.</p>
+    <p class="a71-thanks-note">You don't need to submit another request right now.</p>
+    <a href="/" class="btn btn-lime a71-thanks-home">Back to MPS Homepage <span class="arrow" aria-hidden="true">↗</span></a>
+  </section>
+</main>
+<footer class="a71-funnel-footer"><div class="container a71-funnel-footer-inner"><span>© Area71 Venture Limited</span><a href="https://area71academy.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></div></footer>
+<script src="/consultation/theme.js" defer></script>
+</body></html>
