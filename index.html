@@ -203,24 +203,91 @@ fbq('track', 'PageView');
             <span><span class="tick">✓</span> 1 years of operational support</span>
           </div>
         </div>
-        <aside class="hero-card" aria-label="MPS consultation briefing">
-          <div class="hero-card-top"><span class="mini-tag">Your MPS introduction</span><span class="small-round" aria-hidden="true">↗</span></div>
-          <h2>Build a global brand without running every task yourself.</h2>
-          <p>Discover how the managed model works, what investment planning involves and which steps Area71 manages for you.</p>
-          <div class="brief-row"><span class="brief-num">01</span><span class="brief-text"><b>Tell us about your goals</b><small>New to Amazon or already selling? Start with your objectives and starting point.</small></span></div>
-          <div class="brief-row"><span class="brief-num">02</span><span class="brief-text"><b>Understand the business model</b><small>Review product, inventory, logistics, launch and advertising requirements.</small></span></div>
-          <div class="brief-row"><span class="brief-num">03</span><span class="brief-text"><b>Discuss the right plan</b><small>Explore timelines, scope, costs and the next steps with Area71's team.</small></span></div>
-          <a class="btn btn-primary btn-wide" href="#mps-consultation" >Schedule Free Consultation <span class="arrow" aria-hidden="true">↗</span></a>
-          <p class="privacy">
-  Complete our consultation form below.
-  We use your details to respond to your request.
-  Read our
-  <a href="https://area71academy.com/privacy-policy/"
-     target="_blank" rel="noopener noreferrer">
-    Privacy Policy
-  </a>.
-</p>
-        </aside>
+        
+<!-- AREA71 MPS INTRODUCTION VIDEO -->
+<aside class="a71-hero-media" aria-label="Area71 MPS introduction video">
+
+  <div class="a71-hero-player" id="a71-hero-player">
+
+    <video
+      id="a71-hero-video"
+      src="/media/area71-mps-introduction-mobile.mp4"
+      poster="/assets/mps-video-poster.png"
+      preload="none"
+      playsinline
+      controls
+      aria-label="Area71 MPS introduction video"
+    >
+      Your browser does not support HTML5 video.
+    </video>
+
+    <button
+      class="a71-hero-start"
+      id="a71-hero-start"
+      type="button"
+      aria-label="Play introduction video"
+      hidden
+    >
+      ▶
+    </button>
+
+    <div class="a71-hero-controls" id="a71-hero-controls" hidden>
+
+      <input
+        id="a71-hero-seek"
+        class="a71-hero-seek"
+        type="range"
+        min="0"
+        max="100"
+        step="0.1"
+        value="0"
+        aria-label="Video playback position"
+      >
+
+      <div class="a71-hero-control-row">
+
+        <button id="a71-hero-toggle" type="button"
+                aria-label="Play video">▶</button>
+
+        <span id="a71-hero-time" class="a71-hero-time">
+          0:00 / 8:51
+        </span>
+
+        <button id="a71-hero-mute" type="button"
+                aria-label="Mute video">🔊</button>
+
+        <label class="a71-hero-volume-label">
+          <span class="a71-sr-only">Volume</span>
+          <input id="a71-hero-volume" type="range"
+                 min="0" max="1" step="0.05" value="1">
+        </label>
+
+        <label class="a71-hero-speed-label">
+          <span class="a71-sr-only">Playback speed</span>
+          <select id="a71-hero-speed" aria-label="Playback speed">
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+
+        <button id="a71-hero-fullscreen" type="button"
+                aria-label="Fullscreen video">⛶</button>
+
+      </div>
+    </div>
+
+    <p class="a71-hero-video-error" id="a71-hero-error"
+       role="alert" hidden>
+      Unable to load the video. Please try again.
+    </p>
+
+  </div>
+
+</aside>
+
       </div>
     </section>
     <section class="trust" aria-label="Key program characteristics">
