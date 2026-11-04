@@ -2013,3 +2013,266 @@ a.a71-footer-contact-item:hover {
 
 
 
+/* ================================================
+   AREA71 MPS - GLOBAL TYPOGRAPHY IMPROVEMENT
+   Better readability on desktop, tablet and mobile
+================================================ */
+
+/* 1. GENERAL BODY TEXT */
+
+body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dim {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 2. SMALL HEADINGS AND LABELS */
+
+.eyebrow,
+.mini-tag,
+.a71-video-number {
+  font-size: 12px;
+}
+
+.brief-num,
+.service-number,
+.step-no {
+  font-size: 13px;
+}
+
+/* 3. HERO SECTION */
+
+.hero-points span {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.hero-card > p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.brief-text b {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.brief-text small {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #536777;
+}
+
+.hero-card .privacy {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #576d65;
+}
+
+/* 4. FEATURE STRIP */
+
+.trust-item .sm {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #53695f;
+}
+
+/* 5. ABOUT, OWNERSHIP AND SERVICES */
+
+.owner-block p,
+.service p,
+.roadmap-step p,
+.owner-banner p {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.owner-block h3 {
+  font-size: 16px;
+}
+
+.service-cta p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.compare-card li {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* 6. BUSINESS CALCULATOR */
+
+.calc-head-note {
+  font-size: 12px;
+}
+
+.field label {
+  font-size: 14px;
+}
+
+.input-wrap > span {
+  font-size: 14px;
+}
+
+.input-wrap input {
+  font-size: 16px;
+}
+
+.calc-tip,
+.calc-results .lead,
+.result-sub,
+.result-line,
+.notice {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.result-line b {
+  font-size: 15px;
+}
+
+.legend {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.calc-results .disclaimer {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 7. FAQ AND CLOSING CTA */
+
+.faq-list summary {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.faq-list details p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.final-cta small {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* 8. CASE STUDY / VIDEO SECTION */
+
+.a71-video-empty {
+  font-size: 14px;
+}
+
+.a71-video-details h3 {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* 9. CONSULTATION FORM */
+
+.a71-lead-benefits p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.a71-lead-benefits p span {
+  font-size: 13px;
+}
+
+.a71-lead-card-head p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.a71-lead-field label {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 16px also avoids automatic input zoom on iOS */
+
+.a71-lead-field input,
+.a71-lead-field select,
+.a71-lead-field textarea {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.a71-lead-consent {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.a71-lead-hint {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.a71-lead-status {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 10. FOOTER */
+
+.a71-footer {
+  font-size: 15px;
+}
+
+.a71-footer-heading {
+  font-size: 16px;
+}
+
+.a71-footer-description,
+.a71-footer-links a,
+.a71-footer-contact-item {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.a71-footer-bottom-inner {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ================================================
+   11. MOBILE OPTIMIZATION
+================================================ */
+
+@media (max-width: 540px) {
+
+  /* Keep paragraph text readable */
+  .hero-intro,
+  .sub {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* Feature strip headings */
+  .trust-item .big {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  /* Descriptions stay readable */
+  .trust-item .sm,
+  .brief-text small {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* Video titles should not shrink */
+  .a71-video-details h3 {
+    font-size: 17px;
+  }
+}
+
+
+
+
