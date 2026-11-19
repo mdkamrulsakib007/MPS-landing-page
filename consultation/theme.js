@@ -4,6 +4,9 @@
 (function () {
   "use strict";
 
+  const year = document.getElementById("a71-footer-year");
+  if (year) year.textContent = String(new Date().getFullYear());
+
   const root = document.documentElement;
   const button = document.getElementById("theme-toggle");
   const themeMeta = document.querySelector('meta[name="theme-color"]');

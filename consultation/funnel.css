@@ -137,3 +137,191 @@
     grid-template-columns:minmax(0,1fr);
   }
 }
+
+/* ==========================================================
+   Consultation page: hero, centred form, map, animated band
+   ========================================================== */
+.a71-funnel-consultation .a71-lead-layout {
+  grid-template-columns:minmax(0,1fr); max-width:780px;
+}
+.a71-funnel-consultation .a71-lead-section { padding:72px 0 96px; }
+
+/* Hero: hand + phone over the brand card */
+.a71-cx-hero { background:#fff; padding:22px 0 64px; }
+.a71-cx-crumb {
+  font-size:13px; color:#627384; padding-bottom:14px;
+  border-bottom:1px solid #e3ece8;
+}
+.a71-cx-crumb a { color:#015a49; text-decoration:underline; }
+.a71-cx-title {
+  text-align:center; color:#015a49; font-weight:600;
+  font-size:clamp(27px,3.4vw,40px); margin:clamp(24px,4vw,44px) 0 clamp(16px,3vw,36px);
+}
+/* Percent paddings resolve against width, so the card, photo and headline
+   keep the same proportions at every screen size. */
+.a71-cx-stage { position:relative; --hand:72%; --card-top:6.7%; --head-gap:49.5%; }
+.a71-cx-hand {
+  position:absolute; left:0; top:0; z-index:1;
+  width:var(--hand); height:auto; display:block; pointer-events:none;
+}
+.a71-cx-card {
+  margin-top:var(--card-top);
+  padding:var(--head-gap) clamp(18px,4.7vw,56px) clamp(18px,3.9vw,46px);
+  border-radius:clamp(20px,2.4vw,28px);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(203,232,108,.09) 0 30%, transparent 30.2%),
+    linear-gradient(135deg,#015a49 0%,#004637 55%,#0b6b56 100%);
+}
+.a71-cx-headline {
+  position:relative; z-index:2; margin:0; color:#fff;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif; font-weight:400;
+  font-size:clamp(38px,8.6vw,106px); line-height:1; letter-spacing:-.055em;
+}
+.a71-cx-headline span {
+  background:linear-gradient(90deg,#cbe86c,#e9f7b0);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* Map */
+.a71-cx-map { position:relative; height:460px; background:#e9e5dc; overflow:hidden; }
+.a71-cx-map-frame {
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+  filter:saturate(.7);
+}
+.a71-cx-map-inner { position:relative; height:100%; pointer-events:none; }
+.a71-cx-map-card {
+  position:absolute; left:0; top:50%; transform:translateY(-50%);
+  width:min(350px,100%); box-sizing:border-box; padding:26px;
+  background:#fff; border-radius:18px; pointer-events:auto;
+  box-shadow:0 20px 50px rgba(16,60,48,.2);
+}
+.a71-cx-map-card h2 { font-size:22px; margin:10px 0 6px; letter-spacing:-.03em; }
+.a71-cx-map-card p { margin:0 0 16px; color:#3d5060; }
+.a71-cx-map-btn { min-height:44px; }
+
+/* Animated brand band */
+.a71-cx-band {
+  position:relative; overflow:hidden; background:#eef6f1;
+  padding:clamp(64px,8vw,110px) 0;
+}
+.a71-cx-band-glow {
+  position:absolute; width:700px; height:700px; border-radius:50%;
+  background:#f8fbf3; left:-140px; top:-170px;
+}
+.a71-cx-floats { position:absolute; inset:0; pointer-events:none; }
+.a71-cx-float {
+  position:absolute; display:block; width:var(--s,40px); height:var(--s,40px);
+  animation:a71-cx-drift var(--d,9s) ease-in-out var(--delay,0s) infinite;
+}
+.a71-cx-float svg { width:100%; height:100%; display:block; overflow:visible; }
+.a71-cx-f1 { --s:44px; left:34%; top:12%; }
+.a71-cx-f2 { --s:40px; left:12%; top:74%; --d:12s; --delay:-3s; }
+.a71-cx-f3 { --s:54px; left:83%; top:14%; --d:7s;  --delay:-5s; }
+.a71-cx-f4 { --s:30px; left:90%; top:72%; --d:10s; --delay:-2s; }
+.a71-cx-f5 { --s:26px; left:58%; top:80%; --d:11s; --delay:-6s; }
+.a71-cx-f6 { --s:20px; left:47%; top:8%;  --d:8s;  --delay:-1s; }
+.a71-cx-f7 { --s:28px; left:4%;  top:14%; --d:13s; --delay:-7s; }
+.a71-cx-f8 { --s:32px; left:27%; top:78%; --d:9.5s; --delay:-4s; }
+.a71-cx-c1 { fill:#cbe86c; stroke:#015a49; stroke-width:2; }
+.a71-cx-c2 { fill:#015a49; }
+.a71-cx-float text {
+  font:800 18px 'Plus Jakarta Sans',sans-serif; fill:#015a49;
+}
+.a71-cx-f4 text { fill:#cbe86c; font-size:20px; }
+.a71-cx-box { fill:#fff; stroke:#015a49; stroke-width:2; stroke-linejoin:round; }
+.a71-cx-box-lime { fill:#cbe86c; }
+.a71-cx-boxline { fill:none; stroke:#015a49; stroke-width:2; stroke-linejoin:round; }
+.a71-cx-star { fill:#cbe86c; stroke:#015a49; stroke-width:1.4; stroke-linejoin:round; }
+.a71-cx-dot { fill:#cbe86c; }
+@keyframes a71-cx-drift {
+  0%,100% { transform:translate(0,0) rotate(0deg); }
+  33%     { transform:translate(10px,-18px) rotate(10deg); }
+  66%     { transform:translate(-8px,-8px) rotate(-6deg); }
+}
+.a71-cx-band-inner {
+  position:relative; display:flex; align-items:center;
+  justify-content:space-between; gap:60px;
+}
+.a71-cx-band-brand { display:flex; flex-direction:column; gap:14px; }
+.a71-cx-band-logo {
+  align-self:flex-start; background:#fff; border-radius:22px; padding:20px 26px;
+  box-shadow:0 16px 40px rgba(16,60,48,.1);
+}
+.a71-cx-band-logo img { display:block; width:clamp(160px,17vw,240px); height:auto; }
+.a71-cx-band-tag {
+  font-size:13px; color:#015a49; font-weight:800; letter-spacing:.16em;
+  text-transform:uppercase; padding-left:6px;
+}
+.a71-cx-band-line {
+  max-width:500px; margin:0; color:#111f2b;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif; font-weight:400;
+  font-size:clamp(22px,2.6vw,32px); line-height:1.3; letter-spacing:-.03em;
+}
+.a71-cx-band-line a { color:#015a49; text-decoration:underline; text-underline-offset:5px; }
+
+/* Dark mode */
+:root[data-theme="dark"] .a71-cx-hero { background:#111f2b; }
+:root[data-theme="dark"] .a71-cx-crumb { color:#b5c4d0; border-color:#354c5e; }
+:root[data-theme="dark"] .a71-cx-crumb a { color:#c4e1dd; }
+:root[data-theme="dark"] .a71-cx-title { color:#cbe86c; }
+:root[data-theme="dark"] .a71-cx-card {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(203,232,108,.07) 0 30%, transparent 30.2%),
+    linear-gradient(135deg,#015a49 0%,#003a2e 60%,#0b5f4d 100%);
+  box-shadow:inset 0 0 0 1px #1f5e50;
+}
+:root[data-theme="dark"] .a71-funnel-consultation .a71-lead-section { background:#172938; }
+:root[data-theme="dark"] .a71-cx-map { background:#1b2a35; }
+:root[data-theme="dark"] .a71-cx-map-frame {
+  filter:invert(.9) hue-rotate(180deg) saturate(.45) brightness(.9);
+}
+:root[data-theme="dark"] .a71-cx-map-card {
+  background:#1e3141; box-shadow:0 0 0 1px #354c5e, 0 20px 50px rgba(0,0,0,.35);
+}
+:root[data-theme="dark"] .a71-cx-map-card h2 { color:#eef4f8; }
+:root[data-theme="dark"] .a71-cx-map-card p { color:#c1d1dc; }
+:root[data-theme="dark"] .a71-cx-map-card .eyebrow,
+:root[data-theme="dark"] .a71-cx-band-tag { color:#cbe86c; }
+:root[data-theme="dark"] .a71-cx-band { background:#172938; }
+:root[data-theme="dark"] .a71-cx-band-glow { background:#1e3141; }
+:root[data-theme="dark"] .a71-cx-band-logo { box-shadow:none; }
+:root[data-theme="dark"] .a71-cx-band-line { color:#eef4f8; }
+:root[data-theme="dark"] .a71-cx-band-line a { color:#cbe86c; }
+:root[data-theme="dark"] .a71-cx-box:not(.a71-cx-box-lime) { fill:#243b4b; stroke:#9dc4c9; }
+:root[data-theme="dark"] .a71-cx-f2 .a71-cx-boxline,
+:root[data-theme="dark"] .a71-cx-f8 .a71-cx-boxline { stroke:#9dc4c9; }
+:root[data-theme="dark"] .a71-cx-c2 { fill:#0b765c; }
+
+/* Tablet */
+@media (max-width:900px) {
+  .a71-cx-stage { --hand:82%; --card-top:7.6%; --head-gap:56%; }
+  .a71-cx-map { height:420px; }
+  .a71-cx-band-inner { flex-direction:column; text-align:center; gap:24px; }
+  .a71-cx-band-brand { align-items:center; }
+  .a71-cx-band-logo { align-self:center; }
+  .a71-cx-band-tag { padding-left:0; }
+  .a71-funnel-consultation .a71-lead-section { padding:52px 0 72px; }
+  .a71-cx-f1 { left:18%; top:8%; }
+  .a71-cx-f2 { left:5%;  top:82%; }
+  .a71-cx-f5 { left:91%; top:42%; }
+  .a71-cx-f8 { left:6%;  top:44%; }
+}
+/* Phone */
+@media (max-width:600px) {
+  .a71-cx-hero { padding:14px 0 40px; }
+  .a71-cx-stage { --hand:100%; --card-top:9.3%; --head-gap:68%; }
+  .a71-cx-map { height:auto; overflow:visible; padding-bottom:28px; }
+  .a71-cx-map-frame { position:relative; height:300px; display:block; }
+  .a71-cx-map-inner { height:auto; pointer-events:auto; }
+  .a71-cx-map-card {
+    position:relative; top:auto; transform:none; width:100%;
+    margin-top:-48px; padding:20px;
+  }
+  .a71-cx-map-btn { width:100%; justify-content:center; }
+  .a71-cx-f1 { left:72%; top:4%; } .a71-cx-f3 { left:84%; top:88%; }
+  .a71-cx-f2 { left:4%; top:90%; } .a71-cx-f4 { left:88%; top:30%; } .a71-cx-f5 { left:6%; top:34%; }
+  .a71-cx-f6, .a71-cx-f8 { display:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .a71-cx-float { animation:none; }
+}
