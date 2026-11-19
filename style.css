@@ -2499,6 +2499,109 @@ body {
   }
 }
 
+/* ==========================================================
+   Floating consultation pill (bottom-right, all screens)
+   "Orbit ring": a light runs round the edge on hover,
+   the arrow flies out and back, and the pill glows.
+   ========================================================== */
+.a71-float-cta {
+  /* light theme: forest pill, lime badge, green glow */
+  --fc-bg: #015a49; --fc-fg: #fff;
+  --fc-badge: #cbe86c; --fc-badge-fg: #015a49;
+  --fc-ring: #cbe86c; --fc-ring-hot: #fff;
+  --fc-pulse: rgba(1, 90, 73, .35);
+  --fc-shadow: 0 10px 28px rgba(1, 90, 73, .32), 0 0 0 1px rgba(1, 90, 73, .08);
+  --fc-glow: 0 0 0 6px rgba(1, 90, 73, .12), 0 0 28px rgba(203, 232, 108, .55), 0 16px 38px rgba(1, 90, 73, .45);
 
+  position: fixed; z-index: 80;
+  right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 50px; padding: 6px 6px 6px 20px; border-radius: 999px;
+  background: var(--fc-bg); color: var(--fc-fg); text-decoration: none;
+  font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap;
+  box-shadow: var(--fc-shadow);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .2s ease, transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease, visibility .2s;
+}
+:root[data-theme="dark"] .a71-float-cta {
+  /* dark theme: lime pill, navy badge, lime glow */
+  --fc-bg: #cbe86c; --fc-fg: #0e2a22;
+  --fc-badge: #111f2b; --fc-badge-fg: #cbe86c;
+  --fc-ring: #015a49; --fc-ring-hot: #fff;
+  --fc-pulse: rgba(203, 232, 108, .45);
+  --fc-shadow: 0 0 0 1px rgba(203, 232, 108, .35), 0 10px 30px rgba(0, 0, 0, .35);
+  --fc-glow: 0 0 0 6px rgba(203, 232, 108, .16), 0 0 30px rgba(203, 232, 108, .45), 0 14px 36px rgba(0, 0, 0, .4);
+}
+.a71-float-cta.is-visible {
+  opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+}
 
+/* idle attention pulse */
+.a71-float-cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  animation: a71-float-pulse 3s ease-out infinite; pointer-events: none;
+}
+@keyframes a71-float-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--fc-pulse); }
+  60%  { box-shadow: 0 0 0 12px transparent; }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
 
+/* orbit ring: a spinning conic square, clipped to a 2px border */
+.a71-float-cta-orbit {
+  position: absolute; inset: 0; border-radius: inherit;
+  overflow: hidden; pointer-events: none; opacity: 0;
+  transition: opacity .3s ease;
+}
+.a71-float-cta-orbit::before {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 260px; height: 260px; margin: -130px 0 0 -130px;
+  background: conic-gradient(transparent 0 68%, var(--fc-ring) 84%, var(--fc-ring-hot) 92%, transparent 100%);
+  animation: a71-float-orbit 1.6s linear infinite; animation-play-state: paused;
+}
+.a71-float-cta-orbit::after {
+  content: ""; position: absolute; inset: 2px; border-radius: inherit; background: var(--fc-bg);
+}
+@keyframes a71-float-orbit { to { transform: rotate(360deg); } }
+
+.a71-float-cta-label { position: relative; z-index: 1; }
+.a71-float-cta-icon {
+  position: relative; z-index: 1; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--fc-badge); color: var(--fc-badge-fg); font-size: 17px; line-height: 1;
+}
+.a71-float-cta-arrow { display: inline-block; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.a71-float-cta-arrow-next { position: absolute; transform: translate(-170%, 170%); }
+
+/* hover / keyboard focus / touch press */
+.a71-float-cta.is-visible:hover,
+.a71-float-cta.is-visible:focus-visible,
+.a71-float-cta.is-visible:active {
+  transform: translateY(-3px); box-shadow: var(--fc-glow);
+}
+.a71-float-cta:hover .a71-float-cta-orbit,
+.a71-float-cta:focus-visible .a71-float-cta-orbit,
+.a71-float-cta:active .a71-float-cta-orbit { opacity: 1; }
+.a71-float-cta:hover .a71-float-cta-orbit::before,
+.a71-float-cta:focus-visible .a71-float-cta-orbit::before,
+.a71-float-cta:active .a71-float-cta-orbit::before { animation-play-state: running; }
+.a71-float-cta:hover .a71-float-cta-arrow,
+.a71-float-cta:focus-visible .a71-float-cta-arrow,
+.a71-float-cta:active .a71-float-cta-arrow { transform: translate(170%, -170%); }
+.a71-float-cta:hover .a71-float-cta-arrow-next,
+.a71-float-cta:focus-visible .a71-float-cta-arrow-next,
+.a71-float-cta:active .a71-float-cta-arrow-next { transform: none; }
+.a71-float-cta:hover::before,
+.a71-float-cta:focus-visible::before { animation: none; }
+.a71-float-cta:focus-visible { outline: 3px solid var(--fc-badge); outline-offset: 4px; }
+
+@media (min-width: 768px) {
+  .a71-float-cta { right: 24px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .a71-float-cta, .a71-float-cta-arrow { transition: none; }
+  .a71-float-cta::before, .a71-float-cta-orbit::before { animation: none; }
+}

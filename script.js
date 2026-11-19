@@ -497,3 +497,46 @@
   syncVolume();
 })();
 
+
+/* ============================================
+   AREA71 MPS - FLOATING CONSULTATION PILL
+   Visible everywhere except where another booking
+   button is already on screen (hero, final section,
+   footer) or while the mobile menu is open.
+============================================ */
+(function () {
+  "use strict";
+
+  const button = document.getElementById("a71-float-cta");
+  if (!button) return;
+
+  if (!("IntersectionObserver" in window)) {
+    button.classList.add("is-visible");
+    return;
+  }
+
+  const blockers = [".hero-actions", ".final-cta", "#area71-footer"]
+    .map(function (selector) { return document.querySelector(selector); })
+    .filter(Boolean);
+  const menu = document.getElementById("mobile-menu");
+  const onScreen = new Set();
+
+  function update() {
+    const menuOpen = !!(menu && menu.classList.contains("open"));
+    button.classList.toggle("is-visible", onScreen.size === 0 && !menuOpen);
+  }
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) onScreen.add(entry.target);
+      else onScreen.delete(entry.target);
+    });
+    update();
+  }, { threshold: 0 });
+
+  blockers.forEach(function (el) { observer.observe(el); });
+
+  if (menu) {
+    new MutationObserver(update).observe(menu, { attributes: true, attributeFilter: ["class"] });
+  }
+})();
